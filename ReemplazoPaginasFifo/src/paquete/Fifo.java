@@ -1,7 +1,5 @@
 package paquete;
 
-import javax.swing.JOptionPane;
-
 public class Fifo {
 
 	private int cantidadPaginas;
@@ -14,6 +12,12 @@ public class Fifo {
 	public Fifo(){
 		System.out.println("FIFO\n");
 	}
+
+
+	public void setPaginas(int[] paginas) {
+		this.paginas = paginas;
+	}
+
 
 	public void setCantidadPaginas(int cantidadPaginas) {
 		this.cantidadPaginas = cantidadPaginas;
@@ -28,13 +32,7 @@ public class Fifo {
 			fallos[i]=0;
 		}
 	}
-	
-	public void iniciarxpaginas(){
-		for(int c=0;c<cantidadPaginas;c++){
-			paginas[c]=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese valor de paginas ["+(c+1)+"]"));
-		}
-	}
-	
+		
 	public void siguiente(){
 		auxiliar++;
 		if(auxiliar==cantidadFrames){//si llega al final de los frames regresa al primer frame
@@ -66,11 +64,9 @@ public class Fifo {
 	}
 	
 	public void fifo(){
-		paginas= new int [cantidadPaginas];
 		matriz= new int[cantidadFrames][cantidadPaginas];
 		fallos= new int [cantidadPaginas];
 		iniciarxfallos();
-		iniciarxpaginas();
 		for(int i=0;i<cantidadPaginas;i++){
 			modificar(buscar(i),i);
 		}
